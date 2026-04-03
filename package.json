@@ -1,0 +1,12 @@
+{
+  "name": "ollama-agent-chaos",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "pull-model": "ollama pull gemma4",
+    "open-ui": "open http://127.0.0.1:3000"
+  }
+}

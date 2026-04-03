@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agent Chaos</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <div>
+          <p class="eyebrow" data-i18n="eyebrow">Ollama Multi-Agent Sandbox</p>
+          <h1 data-i18n="heroTitle">Fifteen random agents, one shared room.</h1>
+          <p class="hero-copy" data-i18n="heroCopy">
+            Start a local conversation, watch the transcript stream in real
+            time, and kill it the second it gets boring.
+          </p>
+        </div>
+        <div class="hero-status">
+          <div class="status-card">
+            <span class="status-label" data-i18n="runStateLabel">Run State</span>
+            <strong id="run-state">Idle</strong>
+          </div>
+          <div class="status-card">
+            <span class="status-label" data-i18n="turnsLabel">Turns</span>
+            <strong id="turn-count">0</strong>
+          </div>
+          <div class="status-card">
+            <span class="status-label" data-i18n="ollamaLabel">Ollama</span>
+            <strong id="ollama-state">Checking...</strong>
+          </div>
+        </div>
+      </header>
+
+      <main class="layout">
+        <section class="controls panel">
+          <div class="panel-heading">
+            <h2 data-i18n="controlsTitle">Controls</h2>
+            <p data-i18n="controlsCopy">Default model is `gemma4`. Pull it locally first if it is not already installed in Ollama.</p>
+          </div>
+
+          <form id="control-form">
+            <label>
+              <span data-i18n="modelLabel">Model tag</span>
+              <input id="model" name="model" placeholder="gemma4" />
+            </label>
+
+            <label>
+              <span data-i18n="languageLabel">Language</span>
+              <select id="language" name="language">
+                <option value="en">English</option>
+                <option value="es">Español</option>
+                <option value="de">Deutsch</option>
+              </select>
+            </label>
+
+            <label>
+              <span data-i18n="topicLabel">Conversation seed</span>
+              <textarea
+                id="topic"
+                name="topic"
+                rows="4"
+                placeholder="Give the room a topic, or leave this alone."
+                data-i18n-placeholder="topicPlaceholder"
+              ></textarea>
+            </label>
+
+            <div class="control-grid">
+              <label>
+                <span data-i18n="delayLabel">Delay (ms)</span>
+                <input id="intervalMs" name="intervalMs" type="number" min="400" step="100" />
+              </label>
+
+              <label>
+                <span data-i18n="maxTurnsLabel">Max turns</span>
+                <input id="maxTurns" name="maxTurns" type="number" min="1" step="1" />
+              </label>
+            </div>
+
+            <div class="button-row">
+              <button id="start-button" type="submit" data-i18n="startButton">Start conversation</button>
+              <button id="stop-button" type="button" class="secondary" data-i18n="stopButton">Stop</button>
+              <button id="reset-button" type="button" class="secondary" data-i18n="resetButton">Reset</button>
+              <button id="pull-button" type="button" class="ghost" data-i18n="pullButton">Pull model</button>
+            </div>
+          </form>
+
+          <div class="signal-box" id="feedback"></div>
+
+          <div class="pull-log">
+            <div class="panel-heading compact">
+              <h3 data-i18n="pullLogTitle">Model Pull Log</h3>
+            </div>
+            <pre id="pull-log">No pull started.</pre>
+          </div>
+        </section>
+
+        <section class="transcript panel">
+          <div class="panel-heading">
+            <h2 data-i18n="transcriptTitle">Live Transcript</h2>
+            <p id="topic-display"></p>
+          </div>
+          <div id="transcript" class="transcript-list"></div>
+        </section>
+
+        <aside class="roster panel">
+          <div class="panel-heading">
+            <h2 data-i18n="agentsTitle">Agents</h2>
+            <p data-i18n="agentsCopy">Who has spoken, and who looks ready to interrupt.</p>
+          </div>
+          <div id="agent-list" class="agent-list"></div>
+        </aside>
+      </main>
+    </div>
+
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>
