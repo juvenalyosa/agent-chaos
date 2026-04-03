@@ -90,7 +90,7 @@ Official Gemma 4 model library:
 Clone the repository:
 
 ```bash
-git clone <YOUR-REPO-URL>
+git clone https://github.com/juvenalyosa/agent-chaos
 cd locos
 ```
 
