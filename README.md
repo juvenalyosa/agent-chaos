@@ -91,7 +91,7 @@ Clone the repository:
 
 ```bash
 git clone https://github.com/juvenalyosa/agent-chaos
-cd locos
+cd agent-chaos
 ```
 
 There are no external npm packages to install. The project uses only built-in Node.js modules.
