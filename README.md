@@ -2,6 +2,8 @@
 
 Agent Chaos is a local web app that simulates a conversation between 15 distinct AI agents using Ollama as the backend.
 
+![Agent Chaos screenshot](./imagen.png)
+
 It runs a small Node.js server with no external npm dependencies, connects to your local Ollama API, and renders a live browser interface with:
 
 - a real-time transcript
